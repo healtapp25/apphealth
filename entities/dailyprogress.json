@@ -1,0 +1,47 @@
+{
+    "name": "DailyProgress",
+    "type": "object",
+    "properties": {
+      "date": {
+        "type": "string",
+        "format": "date",
+        "description": "Data do progresso"
+      },
+      "water_consumed_ml": {
+        "type": "number",
+        "description": "Água consumida em ml",
+        "default": 0
+      },
+      "calories_consumed": {
+        "type": "number",
+        "description": "Calorias consumidas",
+        "default": 0
+      },
+      "water_goal_achieved": {
+        "type": "boolean",
+        "description": "Se a meta de água foi atingida",
+        "default": false
+      },
+      "calories_goal_achieved": {
+        "type": "boolean",
+        "description": "Se a meta de calorias foi atingida",
+        "default": false
+      },
+      "xp_earned": {
+        "type": "number",
+        "description": "XP ganho no dia",
+        "default": 0
+      }
+    },
+    "required": [
+      "date"
+    ],
+    "rls": {
+      "read": {
+        "created_by": "{{user.email}}"
+      },
+      "write": {
+        "created_by": "{{user.email}}"
+      }
+    }
+  }

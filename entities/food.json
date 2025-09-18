@@ -1,0 +1,56 @@
+{
+    "name": "Food",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Nome do alimento"
+      },
+      "calories_per_100g": {
+        "type": "number",
+        "description": "Calorias por 100g do alimento"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "frutas",
+          "verduras",
+          "cereais",
+          "proteinas",
+          "lacteos",
+          "bebidas",
+          "doces",
+          "outros"
+        ],
+        "description": "Categoria do alimento"
+      },
+      "protein": {
+        "type": "number",
+        "description": "Proteína por 100g",
+        "default": 0
+      },
+      "carbs": {
+        "type": "number",
+        "description": "Carboidratos por 100g",
+        "default": 0
+      },
+      "fat": {
+        "type": "number",
+        "description": "Gordura por 100g",
+        "default": 0
+      }
+    },
+    "required": [
+      "name",
+      "calories_per_100g",
+      "category"
+    ],
+    "rls": {
+      "read": {
+        "created_by": "{{user.email}}"
+      },
+      "write": {
+        "created_by": "{{user.email}}"
+      }
+    }
+  }

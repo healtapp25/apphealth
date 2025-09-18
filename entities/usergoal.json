@@ -1,0 +1,47 @@
+{
+    "name": "UserGoal",
+    "type": "object",
+    "properties": {
+      "water_goal_ml": {
+        "type": "number",
+        "description": "Meta diária de água em mililitros",
+        "default": 2000
+      },
+      "calories_goal": {
+        "type": "number",
+        "description": "Meta diária de calorias",
+        "default": 2000
+      },
+      "is_active": {
+        "type": "boolean",
+        "description": "Se a meta está ativa",
+        "default": true
+      }
+    },
+    "required": [
+      "water_goal_ml",
+      "calories_goal"
+    ],
+    "rls": {
+      "read": {
+        "$or": [
+          {
+            "created_by": "{{user.email}}"
+          },
+          {
+            "created_by": "{{user.email}}"
+          }
+        ]
+      },
+      "write": {
+        "$or": [
+          {
+            "created_by": "{{user.email}}"
+          },
+          {
+            "created_by": "{{user.email}}"
+          }
+        ]
+      }
+    }
+  }

@@ -1,0 +1,35 @@
+{
+    "name": "UserLevel",
+    "type": "object",
+    "properties": {
+      "current_level": {
+        "type": "number",
+        "description": "Nível atual do usuário",
+        "default": 1
+      },
+      "current_xp": {
+        "type": "number",
+        "description": "XP atual no nível",
+        "default": 0
+      },
+      "total_xp": {
+        "type": "number",
+        "description": "XP total acumulado",
+        "default": 0
+      },
+      "avatar_image": {
+        "type": "string",
+        "description": "URL da imagem do avatar atual",
+        "default": "avatar-1"
+      }
+    },
+    "required": [],
+    "rls": {
+      "read": {
+        "created_by": "{{user.email}}"
+      },
+      "write": {
+        "created_by": "{{user.email}}"
+      }
+    }
+  }
