@@ -5,8 +5,8 @@ import { format } from "date-fns";
 import { motion } from "framer-motion";
 
 import XPBar from "../components/gamification/XPBar";
-import Avatar from "../components/gamification/Avatar";
-import LevelUpAnimation from "../components/gamification/LevelUpAnimation";
+import Avatar from "../components/gamification/avatar";
+import LevelUpAnimation from "../components/gamification/levelupanimation";
 import DailyGoals from "../components/dashboard/dailygoals.js";
 
 export default function Dashboard() {
