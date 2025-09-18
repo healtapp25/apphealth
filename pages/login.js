@@ -199,7 +199,7 @@ export default function Login() {
             {!isSignUp && (
               <div className="text-center">
                 <Link
-                  to="/forgot-password"
+                  href="/forgot-password"
                   className="text-sm text-green-600 hover:text-green-700 font-medium transition-colors duration-200"
                 >
                   Esqueceu sua senha?
