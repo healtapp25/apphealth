@@ -20,6 +20,14 @@ export default function ForgotPassword() {
     setMessage('')
 
     try {
+      // Guard: supabase may be null during server build if env vars are missing
+      if (!supabase) {
+        const msg = 'Configuração do Supabase ausente. Defina NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY no ambiente (Render Settings → Environment).'
+        if (typeof window === 'undefined') {
+          console.error(msg)
+        }
+        throw new Error(msg)
+      }
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/reset-password`,
       })
@@ -126,4 +134,9 @@ export default function ForgotPassword() {
       </motion.div>
     </div>
   )
+}
+
+// Avoid static pre-rendering for this page to prevent build-time crashes
+export async function getServerSideProps() {
+  return { props: {} }
 }
