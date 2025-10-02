@@ -4,7 +4,17 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Avoid crashing during build if env vars are missing. Export null and log a clear message.
+export const supabase = (supabaseUrl && supabaseAnonKey)
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : (() => {
+      const msg = '[Supabase] Variáveis de ambiente ausentes: defina NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY.'
+      // Only log on server/build to avoid spamming client
+      if (typeof window === 'undefined') {
+        console.error(msg)
+      }
+      return null
+    })()
 
 // Base class for all entities
 export class BaseEntity {
